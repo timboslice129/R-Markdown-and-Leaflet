@@ -1,0 +1,29 @@
+---
+title: "Best cafes and Restaurants in Melbourne"
+author: "Tim"
+date: "15/02/2020"
+output: html_document
+---
+
+## Best restaurants and cafes in Melbourne
+
+
+
+
+```{r, echo=FALSE, message=FALSE}
+  library(leaflet)
+  coffee <- makeIcon(
+    iconUrl = "https://banner2.kisspng.com/20180403/vte/kisspng-coffee-vienna-breakfast-bistro-cafe-symbols-5ac371aab0f666.7632373515227580587249.jpg",
+    iconWidth = 31*215/230, iconHeight = 31,
+    iconAnchorX = 31*215/230/2, iconAnchorY = 16
+  )
+
+websites <- c("<a href='https://espressomelbourne.com/cafes/south/batch/'>Batch Espresso</a>", "<a href='https://www.facebook.com/Treehouse-Lounge-balaclava-765823303764296/'>Treehouse Lounge Bar</a>", "<a href='https://www.wallcoffee.com.au/'>Wall Two 80</a>")
+
+  df = data.frame(lat = c(-37.8688069, -37.869012, -37.86856), lng = c(144.9953459, 144.995665, 144.99323), popup = c("Batch Espresso", "Treehouse Lounge Bar", "Wall Two 80"))
+  
+  df %>% 
+    leaflet() %>%
+    addTiles() %>%
+    addMarkers(popup = websites, icon = c(coffee, coffee, coffee))
+```
