@@ -4,7 +4,7 @@ author: "Tim"
 date: "16/02/2020"
 output: html_document
 ---
-```{r, echo=FALSE, message=FALSE}
+```{r, echo=FALSE, message=FALSE, fig.height=8, fig.width=12}
   library(leaflet)
   foodIcons <- iconList(
     cafe = makeIcon("https://ae01.alicdn.com/kf/HTB1zoD_kfMTUeJjSZFKq6ygopXaA/Creative-Coffee-Cup-Silhouette-Vinyl-Wall-Sticker-Cafe-Shop-Wall-Decal.jpg", iconWidth = 18, iconHeight = 18),
