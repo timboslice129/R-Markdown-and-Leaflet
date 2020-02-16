@@ -1,0 +1,25 @@
+---
+title: "Favourite Cafes and Restaurants in Melbourne"
+author: "Tim"
+date: "16/02/2020"
+output: html_document
+---
+```{r, echo=FALSE, message=FALSE}
+  library(leaflet)
+  foodIcons <- iconList(
+    cafe = makeIcon("https://ae01.alicdn.com/kf/HTB1zoD_kfMTUeJjSZFKq6ygopXaA/Creative-Coffee-Cup-Silhouette-Vinyl-Wall-Sticker-Cafe-Shop-Wall-Decal.jpg", iconWidth = 18, iconHeight = 18),
+    restaurant = makeIcon("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/RWB-RWBA_Gasthaus.svg/1024px-RWB-RWBA_Gasthaus.svg.png"   , iconWidth = 18, iconHeight = 18)
+  )   
+ 
+
+websites <- c("<a href='https://espressomelbourne.com/cafes/south/batch/'>Batch Espresso</a>", "<a href='https://www.facebook.com/Treehouse-Lounge-balaclava-765823303764296/'>Treehouse Lounge Bar</a>", "<a href='https://www.wallcoffee.com.au/'>Wall Two 80</a>", "<a href='https://www.timeout.com/melbourne/restaurants/si-senor-art-taqueria'>Si Senor Art Taqueria</a>", "<a href='https://www.lastapas.com.au/'>Las Tapas</a>", "<a href='https://www.blencowesmilkbar.com/'>blencowesmilkbar</a>", "<a href='http://restaurantsnapshot.com/GalleonCafe/'>Galleon Cafe</a>", "<a href='https://thelocal.com.au/'>The Local Taphouse</a>", "<a href='https://toppaddockcafe.com/'>Top Paddock Cafe</a>", "<a href='https://www.facebook.com/claypotsstkilda/'>Claypots Seafood Bar</a>", "<a href='https://www.iddybiddy.com.au/'>Iddy Biddy Bar</a>", "<a href='https://mrmiyagi.com.au/'>Mr Miyagi</a>", "<a href='https://hanoihannah.com.au/expresslane/'>Hannoi Hannah</a>", "<a href='https://ilbacaro.com.au/'>Il Bacaro</a>", "<a href='https://www.hawkerhall.com.au/'>Hawker Hall</a>")
+
+  df = data.frame(lat = c(-37.8688069, -37.869012, -37.86856, -37.868997, -37.86807235924756, -37.86589, -37.86706, -37.86823, -37.83274, -37.87048, -37.87043, -37.85412, -37.8521, -37.8138, -37.85448), lng = c(144.9953459, 144.995665, 144.99323, 144.993274, 144.99028444290164, 144.99465, 144.97903, 144.98995, 144.99635, 144.98033, 144.98087, 144.99285, 144.99452, 144.96828, 144.99294), type = c("cafe", "cafe", "cafe", "restaurant", "restaurant", "cafe", "cafe", "restaurant", "cafe", "restaurant", "cafe", "restaurant", "restaurant", "restaurant", "restaurant"))
+  
+  maplabels <- c("Batch Espresso", "Treehouse Lounge Bar", "Wall Two 80", "Si Senor Art Taqueria", "Las Tapas", "BlencowesMilkBar", "Galleon Cafe", "The Local Taphouse", "Top Paddock Cafe", "Claypots Seafood Bar", "Iddy Biddy", "Mr Miyagi", "Hannoi Hannah", "Il Bacaro", "Hawker Hall")
+  
+  df %>% 
+    leaflet() %>%
+    addTiles() %>%
+    addMarkers(popup = websites, icon = ~foodIcons[type], label = maplabels)
+```
